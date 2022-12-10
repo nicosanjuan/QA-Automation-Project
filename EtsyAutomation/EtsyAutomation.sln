@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EtsyAutomation", "EtsyAutomation.csproj", "{64FA81D5-A73A-4D38-B827-918B85F0EB96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EtsyNUnitTests", "..\EtsyNUnitTests\EtsyNUnitTests.csproj", "{C05DE49F-63CC-44A5-977E-883374B11D6C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{64FA81D5-A73A-4D38-B827-918B85F0EB96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64FA81D5-A73A-4D38-B827-918B85F0EB96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64FA81D5-A73A-4D38-B827-918B85F0EB96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64FA81D5-A73A-4D38-B827-918B85F0EB96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C05DE49F-63CC-44A5-977E-883374B11D6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C05DE49F-63CC-44A5-977E-883374B11D6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C05DE49F-63CC-44A5-977E-883374B11D6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C05DE49F-63CC-44A5-977E-883374B11D6C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0C6EE22F-EF4B-4F8A-B095-57783A82DA3B}
+	EndGlobalSection
+EndGlobal
