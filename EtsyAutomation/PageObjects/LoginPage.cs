@@ -22,10 +22,10 @@ namespace EtsyAutomation.PageObjects
         /// EtsyLogin
         /// </summary>
         /// 
-        [FindsBy(How = How.XPath, Using = "//*[@id=\"join_neu_email_field\"]")]
+        [FindsBy(How = How.XPath, Using = "//*[@id='join_neu_email_field']")]
         public IWebElement Text_EtsyEmailAddress { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//*[@id=\"join_neu_password_field\"]")]
+        [FindsBy(How = How.XPath, Using = "//*[@id='join_neu_password_field']")]
         public IWebElement Text_EtsyPassword { get; set; }
 
         [FindsBy(How = How.Name, Using = "submit_attempt")]
@@ -37,7 +37,7 @@ namespace EtsyAutomation.PageObjects
         /// <summary>
         /// Login with Goolgle
         /// </summary>
-        [FindsBy(How = How.XPath, Using = "//*[@id=\"join-neu-form\"]/div[3]/div[1]/div/button")]
+        [FindsBy(How = How.XPath, Using = "//button[contains(. , 'Continue with Google')]")]
         public IWebElement btn_LoginWithGoogleAccount { get; set; }
 
         [FindsBy(How = How.Id, Using = "identifierId")]

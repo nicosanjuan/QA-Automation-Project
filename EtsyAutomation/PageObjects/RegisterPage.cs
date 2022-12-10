@@ -9,7 +9,7 @@ namespace EtsyAutomation.PageObjects
     public class RegisterPage : BasePage
     {
 
-        [FindsBy(How = How.XPath, Using = "//*[@id=\"join-neu-form\"]/div[1]/div/div[1]/div/button")]
+        [FindsBy(How = How.XPath, Using = "//button[contains(. , 'Register')]")]
         public IWebElement Register { get; set; }
 
         [FindsBy(How = How.Id, Using = "join_neu_email_field")]
@@ -24,7 +24,7 @@ namespace EtsyAutomation.PageObjects
         [FindsBy(How = How.Name, Using = "submit_attempt")]
         public IWebElement RegisterButton { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//*[contains(@id,'join-neu-overlay')]")]
+        [FindsBy(How = How.XPath, Using = "//div[@class='wt-validation__message wt-mt-xs-1 ']")]
         public IWebElement RegistrationMessage { get; set; }
         public RegisterPage()
         {

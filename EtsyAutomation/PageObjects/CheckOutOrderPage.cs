@@ -83,10 +83,6 @@ namespace EtsyAutomation.PageObjects
             ShoppingCartIcon.Click();
             Thread.Sleep(2000);
 
-            /* IWebElement ViewNCheckOut = driver.FindElement(By.XPath("//*[@id=\"atc-overlay-content\"]/div[2]/div/a"));
-             ViewNCheckOut.Click();
-             Thread.Sleep(2000);
-            */
             ProceedCheckOutButton.Click();
             Thread.Sleep(3000);
 

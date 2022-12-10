@@ -42,9 +42,9 @@ namespace EtsyNUnitTests
         [Test, Order(5)]
         public void Test_CheckOUtOrder()
         {
-            ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
+            EtsyHomePage etsyHomePage = new EtsyHomePage(); 
             CheckOutOrderPage checkOutOrderPage = new CheckOutOrderPage();
-            shoppingCartPage.AddItemsToCart();
+            etsyHomePage.AddItemsToCart();
             checkOutOrderPage.CheckOutOrder();
             checkOutOrderPage.PaymentMethod();
         }
