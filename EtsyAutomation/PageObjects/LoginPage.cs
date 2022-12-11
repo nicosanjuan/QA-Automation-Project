@@ -31,7 +31,7 @@ namespace EtsyAutomation.PageObjects
         [FindsBy(How = How.Name, Using = "submit_attempt")]
         public IWebElement Btn_EtsySignIn { get; set; }
 
-        [FindsBy(How = How.Id, Using = "aria-join_neu_password_field-error")]
+        [FindsBy(How = How.XPath, Using = "//div[@id='aria-join_neu_password_field-error']")]
         public IWebElement Text_LoginSuccesmessage { get; set; }
 
         /// <summary>
@@ -57,23 +57,18 @@ namespace EtsyAutomation.PageObjects
         public IWebElement AccountLogout { get; set; }
 
 
-        public void LoginWithEtsyAccount()
+        public void LoginWithEtsyAccount(string userEmailAddress, string userPassword)
         {
             OpenSignIn();
-
-            Text_EtsyEmailAddress.SendKeys("sjuannic@gmail.com");
-            Text_EtsyPassword.SendKeys("Q@3ngin33r!");
+            Text_EtsyEmailAddress.SendKeys(userEmailAddress);
+            Text_EtsyPassword.SendKeys(userPassword);
             Btn_EtsySignIn.Click();
-
             Thread.Sleep(3000);
-            var successMessage = Text_LoginSuccesmessage.Text;
-            if (successMessage.Contains("Password was incorrect"))
-            {
-                Assert.Fail("FAILED to log in with etsy account");
-            }
+
+            
         }
 
-        public void LoginWithGoogle()
+        public void LoginWithGoogle(string emailAdress, string password)
         {
             OpenSignIn();
             Thread.Sleep(2000);
@@ -87,14 +82,14 @@ namespace EtsyAutomation.PageObjects
             Thread.Sleep(2000);
 
             Text_EmailAddress.Click();
-            Text_EmailAddress.SendKeys("sjuannic@gmail.com");
+            Text_EmailAddress.SendKeys(emailAdress);
             NextButton.Click();
             Thread.Sleep(2000);
 
             Text_Passord.Click();
             Thread.Sleep(2000);
 
-            Text_Passord.SendKeys("Q@3ngin33r!");
+            Text_Passord.SendKeys(password);
             NextButton.Click();
             Thread.Sleep(200);
             //switch to maing window

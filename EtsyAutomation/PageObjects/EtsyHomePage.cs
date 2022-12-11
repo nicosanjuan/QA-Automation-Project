@@ -1,4 +1,7 @@
-﻿using OpenQA.Selenium;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting.Logging;
+using NUnit.Framework;
+using NUnit.Framework.Internal;
+using OpenQA.Selenium;
 using OpenQA.Selenium.DevTools.V106.Debugger;
 using SeleniumExtras.PageObjects;
 
@@ -22,6 +25,8 @@ namespace EtsyAutomation.PageObjects
         #endregion
 
         #region Shopping Elements
+        [FindsBy(How = How.XPath, Using = "//a[contains(@href, '/cart?ref=hdr-cart')]")]
+        public IWebElement ShoppingCartIcon { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//input[@name='search_query']")]
         public IWebElement Text_Search { get; set; }
@@ -63,42 +68,38 @@ namespace EtsyAutomation.PageObjects
 
         }
 
-        public void AddItemsToCart()
+        public void AddItemsToCart(String itemCategory, String itemSize)
         {
             IList<IWebElement> itemsinStore = _driver.FindElements(By.XPath("//li[@class='shopping-window wt-display-flex-xs wt-flex-direction-column-xs wt-grid__item-xs-4 wt-grid__item-md-2 wt-pl-xl-6 wt-pr-xl-6']"));
-
             if (itemsinStore.Count > 0)
             {
                 foreach (IWebElement item in Products)
                 {
-                    if (item.Text == "Home Decor")
+                    if (item.Text == itemCategory)
                     {
                         item.Click();
                         Thread.Sleep(2000);
+
                         ShopThisItem.Click();
+                        Thread.Sleep(3000);
 
-                        /*Thread.Sleep(2000);
-                        selectItem.Click();
-                        selectItem.SendKeys("Small (Unframed)");
-
-                        Thread.Sleep(4000);
-                        if (selectCuffFabric.Displayed)
+                        try
                         {
-                            selectCuffFabric.Click();
-                            Thread.Sleep(2000);
-                            selectCuffFabric.SendKeys("Black");
-                            Thread.Sleep(2000);
-
-                            Text_Personalized.Click();
-                            Text_Personalized.SendKeys("December, 2022");
+                            selectItem.Click();
+                            selectItem.SendKeys(itemSize);
+                            selectItem.Click();
+                            Thread.Sleep(3000);
                         }
-*/
+                        catch (Exception e)
+                        {
+                           //do we need to log any message when an element doesn't exist?
+                        }
 
                         AddToCart.Click();
-                        Thread.Sleep(2000);
+                        Thread.Sleep(5000);
 
                         KeepShopping.Click();
-                        Thread.Sleep(2000);
+                        Thread.Sleep(5000);
 
                         HomePage.Click();
                         Thread.Sleep(3000);
@@ -107,6 +108,27 @@ namespace EtsyAutomation.PageObjects
                 }
              }
         }
+
+        protected Boolean isElementPresent(By selector)
+        {
+            _driver.Manage().Timeouts().ImplicitWait.Equals(1);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Logging.Logger.LogMessage("Is element present" + selector);
+            Boolean returnVal = true;
+            try
+            {
+                _driver.FindElement(selector);
+            }
+            catch (NoSuchElementException e)
+            {
+                returnVal = false;
+            }
+            finally
+            {
+                _driver.Manage().Timeouts().ImplicitWait.Equals(1);
+            }
+            return returnVal;
+        }
+
         public void InformationSaved() { }
         public void CheckItemsInShoppingCart() { }
     }

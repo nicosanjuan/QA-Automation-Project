@@ -74,13 +74,12 @@ namespace EtsyAutomation.PageObjects
         [FindsBy(How = How.Name, Using = "payment_submit")]
         public IWebElement ReviewOrder { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//a[contains(@href, '/cart?ref=hdr-cart')]")] //a[contains(@href, '/hdr_user_menu-signout')]
-        public IWebElement ShoppingCartIcon { get; set; }
+        
 
         public void CheckOutOrder()
         {
-
-            ShoppingCartIcon.Click();
+            EtsyHomePage etsyHomePage = new EtsyHomePage();
+            etsyHomePage.ShoppingCartIcon.Click();
             Thread.Sleep(2000);
 
             ProceedCheckOutButton.Click();

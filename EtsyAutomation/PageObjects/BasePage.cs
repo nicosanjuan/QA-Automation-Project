@@ -13,6 +13,7 @@ public class BasePage
         _driver.Navigate().GoToUrl("https://www.etsy.com");
         _driver.Manage().Window.Maximize();
 	}
+
 	[TearDown]
 	public void CleanUp()
 	{

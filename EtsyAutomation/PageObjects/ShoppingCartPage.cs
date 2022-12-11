@@ -12,9 +12,12 @@ namespace EtsyAutomation.PageObjects
 {
     public class ShoppingCartPage : BasePage
     {
+        [FindsBy(How = How.XPath, Using = "//h1[@class='wt-text-heading-01']")]
+        public IWebElement CheckItemsInShoppingCart { get; set; }
         public ShoppingCartPage()
         {
             PageFactory.InitElements(_driver, this);
         }
+
     }
 }

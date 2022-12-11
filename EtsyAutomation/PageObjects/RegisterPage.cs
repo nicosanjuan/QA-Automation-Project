@@ -24,13 +24,13 @@ namespace EtsyAutomation.PageObjects
         [FindsBy(How = How.Name, Using = "submit_attempt")]
         public IWebElement RegisterButton { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//div[@class='wt-validation__message wt-mt-xs-1 ']")]
+        [FindsBy(How = How.XPath, Using = "//div[contains(@class, 'wt-validation__message wt-mt-xs-1')]")]
         public IWebElement RegistrationMessage { get; set; }
         public RegisterPage()
         {
             PageFactory.InitElements(_driver, this);
         }
-        public void CreateSignUp()
+        public void CreateSignUp(string emailAddress, string firstName, string password)
         {
             EtsyHomePage etsyHomePage = new EtsyHomePage();
             etsyHomePage.SignIn.Click();
@@ -40,23 +40,16 @@ namespace EtsyAutomation.PageObjects
             EmailAddress.Click();
 
             Thread.Sleep(3000);
-            EmailAddress.SendKeys("testmail@gmail.com");
+            EmailAddress.SendKeys(emailAddress);
 
             FirstName.Click();
-            FirstName.SendKeys("Nicolas");
+            FirstName.SendKeys(firstName);
 
             Password.Click();
-            Password.SendKeys("Password1");
+            Password.SendKeys(password);
 
             RegisterButton.Click();
             Thread.Sleep(3000);
-            var registerMsg = RegistrationMessage.Text;
-
-            if (registerMsg.Contains("Sorry! There was a problem on our end. Please try registering again or email support@etsy.com for assistance."))
-            {
-                Assert.That(registerMsg, Is.False);
-            }
-
         }
     }
 }
